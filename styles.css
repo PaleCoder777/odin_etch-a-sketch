@@ -1,4 +1,17 @@
 body {
     background-color: black;
     color: white;
+    text-align: center;
+}
+
+#pixelGrid {
+    display: flex;
+    justify-content: center;
+}
+
+.pixel {
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    padding: 10px;
 }
