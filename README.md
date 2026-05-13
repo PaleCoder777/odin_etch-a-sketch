@@ -1,2 +1,16 @@
 # odin_etch-a-sketch
-2nd JavaScript Basics Project in The Odin Project Foundations Course.
+
+Source:
+-   The Odin Project, Foundations Course, JavaScript Basics, Project: Etch-a-Sketch
+
+Project Scope:
+- 
+
+Concepts Used:
+- 
+
+Logic Errors Encountered:
+- 
+
+Project Considerations:
+- 
