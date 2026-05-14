@@ -7,11 +7,17 @@ body {
 #pixelGrid {
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+
 }
 
 .pixel {
     border-width: 1px;
     border-style: solid;
     border-color: white;
-    padding: 10px;
+    box-sizing: border-box;
+    padding: 30.25px;
 }
