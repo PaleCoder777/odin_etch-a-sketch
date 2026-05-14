@@ -11,6 +11,10 @@ Concepts Used:
 - creating projet files
 - breaking down the problem (make a 16 x 16 grid, how can I make 1? move from there, how do i make it wrap)
 - CSS styling (border box, flexbox, max-width)
+- functions
+- for loops
+- reference DOM nodes
+- create Element variables
 
 Logic Errors Encountered:
 - 
