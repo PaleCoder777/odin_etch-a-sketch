@@ -9,7 +9,7 @@ body {
     justify-content: center;
     box-sizing: border-box;
     flex-wrap: wrap;
-    max-width: 1000px;
+    max-width: 500px;
     margin: auto;
 
 }
@@ -19,5 +19,14 @@ body {
     border-style: solid;
     border-color: white;
     box-sizing: border-box;
-    padding: 30.25px;
+    width: 31.25px;
+    padding: 14.625px;
+}
+
+.filled {
+    background-color: white;
+}
+
+.inside {
+    background-color: red;
 }
