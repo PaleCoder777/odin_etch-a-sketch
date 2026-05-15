@@ -1,6 +1,6 @@
 // Project: Etch-a-Sketch //
 
-// Soft coding the padding style needed to fit in 500px max width
+// Numbers for our initial 16x16 grid for 500 max width
 const GRID_MAX_WIDTH = 500;
 const gridSideAmount = 16;
 const rowTotalBorderWidth = gridSideAmount * 2;
@@ -24,36 +24,47 @@ let newTotalSquares;
 // Reference grid section + make grid
 let pixelGridDOM = document.querySelector("#pixelGrid");
 console.log(pixelGridDOM);
-addPixel();
+addPixel(totalSquares);
 
 // Reference all pixels, turn to an array
 let pixelDOM = document.querySelectorAll(".pixel");
 pixelDOM = [...pixelDOM];
 console.log(pixelDOM);
+givePixelListener();
 
 // Loop array to give all pixels listeners
 // pixels change when mouse enter/leave
-for (let item of pixelDOM) {
-    item.addEventListener("mouseenter", () => {
-        item.classList.add("filled");
-        item.classList.add("inside");
-    });
 
-    item.addEventListener("mouseleave", () => {
-        item.classList.remove("inside");
-    });
+
+function givePixelListener(){
+    for (let item of pixelDOM) {
+        item.addEventListener("mouseenter", () => {
+            item.classList.add("filled");
+            item.classList.add("inside");
+        });
+
+        item.addEventListener("mouseleave", () => {
+            item.classList.remove("inside");
+        });
+    }
 }
 
 // Button prompt user for #, remove grid, add grid
 let newGridDOM = document.querySelector("#newGrid");
 newGridDOM.addEventListener("click", () => {
     newgridSideAmount = +prompt(`The new grid will have # of pixels on each side, please select this new #: \n (pick from range 16-100)`, 0);
-    console.log(newgridSideAmount);
     newTotalSquares = (newgridSideAmount * newgridSideAmount);
-    console.log(newTotalSquares);
+    
     for (let pixel of pixelDOM) {
         pixelGridDOM.removeChild(pixel);
     }
+
+    addPixel(newTotalSquares);
+    pixelDOM = document.querySelectorAll(".pixel");
+    pixelDOM = [...pixelDOM];
+    givePixelListener();
+
+
 
 });
 
@@ -63,8 +74,8 @@ newGridDOM.addEventListener("click", () => {
 
 
 // Functions
-function addPixel() {
-    for (let i = 1; i <= 256; i++) {
+function addPixel(totalSquares) {
+    for (let i = 1; i <= totalSquares; i++) {
         let newPixelDOM = document.createElement("div");
         newPixelDOM.classList = ("pixel");
         newPixelDOM.style.padding = pixelPaddingDOM;
