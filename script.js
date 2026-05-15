@@ -23,6 +23,12 @@ for (let item of pixelDOM) {
     });
 }
 
+// Button prompt user for #, remove grid, add grid
+let newGridDOM = document.querySelector("#newGrid");
+newGridDOM.addEventListener("click", () => {
+    let newGridAmount = +prompt(`The new grid will have # of pixels on each side, please select this new #: \n (pick from range 16-100)`, 0);
+});
+
 
 
 // Functions
