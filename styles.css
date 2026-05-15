@@ -23,8 +23,6 @@ body {
     border-style: solid;
     border-color: white;
     box-sizing: border-box;
-    width: 31.25px;
-    padding: 14.625px;
 }
 
 .filled {
