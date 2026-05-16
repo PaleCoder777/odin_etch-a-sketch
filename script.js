@@ -6,30 +6,25 @@ const gridSideAmount = 16;
 const rowTotalBorderWidth = gridSideAmount * 2;
 const pixelPadding = (GRID_MAX_WIDTH - rowTotalBorderWidth) / (gridSideAmount);
 const pixelPaddingPerSide = pixelPadding / 2;
-console.log(pixelPaddingPerSide);
+const totalSquares = gridSideAmount * gridSideAmount;
+const pixelPaddingDOM = (`${pixelPaddingPerSide}px`);   
 
-// DOM Style specific, make it string + px
-let pixelPaddingDOM = (`${pixelPaddingPerSide}px`);
-console.log(pixelPaddingDOM);
-
-// Initial Grid Amount + declare a variable for new amount
-let totalSquares = gridSideAmount * gridSideAmount;
-console.log(gridSideAmount);
-console.log(totalSquares);
+// Declare global variables for new grid generation
 let newgridSideAmount;
+let newTotalBorderWidth;
+let newPixelPadding;
+let newPixelPadPerSide;
 let newTotalSquares;
-
+let newPixelPaddingDOM;
 
 
 // Reference grid section + make grid
 let pixelGridDOM = document.querySelector("#pixelGrid");
-console.log(pixelGridDOM);
-addPixel(totalSquares);
+addPixel(totalSquares, pixelPaddingDOM);
 
 // Reference all pixels, turn to an array
 let pixelDOM = document.querySelectorAll(".pixel");
 pixelDOM = [...pixelDOM];
-console.log(pixelDOM);
 givePixelListener();
 
 // Loop array to give all pixels listeners
@@ -59,33 +54,23 @@ newGridDOM.addEventListener("click", () => {
         pixelGridDOM.removeChild(pixel);
     }
 
-    addPixel(newTotalSquares);
+    // New values generated from user prompt
+    newTotalBorderWidth = (newgridSideAmount * 2);
+    newPixelPadding = (GRID_MAX_WIDTH - newTotalBorderWidth) / (newgridSideAmount);
+    newPixelPadPerSide = (newPixelPadding / 2);
+    newPixelPaddingDOM = (`${newPixelPadPerSide}px`);
+
+    addPixel(newTotalSquares, newPixelPaddingDOM);
     pixelDOM = document.querySelectorAll(".pixel");
     pixelDOM = [...pixelDOM];
     givePixelListener();
-
-
-
 });
 
-
-
-
-
-
-// Functions
-function addPixel(totalSquares) {
+function addPixel(totalSquares, pixelPadding) {
     for (let i = 1; i <= totalSquares; i++) {
         let newPixelDOM = document.createElement("div");
         newPixelDOM.classList = ("pixel");
-        newPixelDOM.style.padding = pixelPaddingDOM;
+        newPixelDOM.style.padding = pixelPadding;
         pixelGridDOM.appendChild(newPixelDOM);
     }
-        
 }
-
-
-
-// Project Considerations/Logic Errors:
-// (-) Hard coding the padding will only work for one scenario
-// (?) How to make event delegation work to avoid eventlistener spam?
