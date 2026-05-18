@@ -25,29 +25,34 @@ addPixel(totalSquares, pixelPaddingDOM);
 // Reference all pixels, turn to an array
 let pixelDOM = document.querySelectorAll(".pixel");
 pixelDOM = [...pixelDOM];
-givePixelListener();
 
-// Loop array to give all pixels listeners
-// pixels change when mouse enter/leave
+// Event Delegation for pixel Grid parent section
+pixelGridDOM.addEventListener("mouseover", () => {
+    let target = event.target;
 
-
-function givePixelListener(){
-    for (let item of pixelDOM) {
-        item.addEventListener("mouseenter", () => {
-            item.classList.add("filled");
-            item.classList.add("inside");
-        });
-
-        item.addEventListener("mouseleave", () => {
-            item.classList.remove("inside");
-        });
+    switch (target.id) {
+        case ("pixel"):
+            target.classList.add("filled");
+            target.classList.add("inside");
+            break;
     }
-}
+});
+
+pixelGridDOM.addEventListener("mouseout", () => {
+    let target = event.target;
+
+    switch (target.id) {
+        case ("pixel"):
+            target.classList.remove("inside");
+            break;
+    }
+});
 
 // Button prompt user for #, remove grid, add grid
 let newGridDOM = document.querySelector("#newGrid");
+
 newGridDOM.addEventListener("click", () => {
-    newgridSideAmount = +prompt(`The new grid will have # of pixels on each side, please select this new #: \n (pick from range 16-100)`, 0);
+    newgridSideAmount = +prompt(`The new grid will have # of pixels on each side, please select this new #: \n (pick from range 1-100)`, 0);
 
     // Limit the user input
     const minUserInput = 1;
@@ -70,13 +75,13 @@ newGridDOM.addEventListener("click", () => {
     addPixel(newTotalSquares, newPixelPaddingDOM);
     pixelDOM = document.querySelectorAll(".pixel");
     pixelDOM = [...pixelDOM];
-    givePixelListener();
 });
 
 function addPixel(totalSquares, pixelPadding) {
     for (let i = 1; i <= totalSquares; i++) {
         let newPixelDOM = document.createElement("div");
         newPixelDOM.classList = ("pixel");
+        newPixelDOM.id = ("pixel"); // NEW, give each pixel id
         newPixelDOM.style.padding = pixelPadding;
         pixelGridDOM.appendChild(newPixelDOM);
     }
