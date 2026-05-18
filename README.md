@@ -15,9 +15,9 @@ https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 **Project Key Aspects:**
 - Breaking down the project instructions into smaller pieces; instead of thinking how to add a 16x16 grid, I first understand think how to add 1 sqaure
 - CSS Styling breakthrough with border box, flexbox, and max-width for the grid
-- Variables that would change depending on user input, like # of sqaures and square padding, would need to function parameters
+- Variables that change depending on user input, like # of sqaures and square padding, need to be function parameters
 - Ensure grid range is within 1-100 by setting minimum and maximum limits
-- A variable eference to grid nodes disapper when those nodes are removed, the reference to a new grid needs to be re-established
+- A variable reference to nodes disapper when those nodes are removed, the reference to new nodes, needs to be re-established
 
 
 **Programming Fundamentals Used:**
