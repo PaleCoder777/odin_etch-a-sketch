@@ -48,6 +48,13 @@ function givePixelListener(){
 let newGridDOM = document.querySelector("#newGrid");
 newGridDOM.addEventListener("click", () => {
     newgridSideAmount = +prompt(`The new grid will have # of pixels on each side, please select this new #: \n (pick from range 16-100)`, 0);
+
+    // Limit the user input
+    const minUserInput = 1;
+    const maxUserInput = 100;
+    if (newgridSideAmount < 1) newgridSideAmount = minUserInput;
+    if (newgridSideAmount > 100) newgridSideAmount = maxUserInput;
+
     newTotalSquares = (newgridSideAmount * newgridSideAmount);
     
     for (let pixel of pixelDOM) {
