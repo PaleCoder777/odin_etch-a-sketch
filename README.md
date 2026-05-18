@@ -18,10 +18,12 @@ https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 - Variables that change depending on user input, like # of sqaures and square padding, need to be function parameters
 - Ensure grid range is within 1-100 by setting minimum and maximum limits
 - A variable reference to nodes disapper when those nodes are removed, the reference to new nodes, needs to be re-established
+- A random color button that generates a new background color hex code whenever the mouse hovers a sqaure
 
 
 **Programming Fundamentals Used:**
 - Git
+- Conditionals
 - Functions
 - Loops
 - DOM Manipulation and DOM variable references
@@ -29,6 +31,8 @@ https://www.theodinproject.com/lessons/foundations-etch-a-sketch
 
 
 **Project Considerations/Logic Errors:**
-- Implement event delegation onto the grid parent
-- Randomize sqaure colors when hovering
-- Add a darken/lighten opacity effect, results in normal color after 10 hovers
+- Add event delegation onto the grid parent
+(implemented on 05/18/2026)
+- Randomize sqaure colors when hovering(implemented on 05/18/2026)
+- Initial color button does not override the random color set onto the sqaures (!)
+- Add a darken/lighten opacity effect, results in normal color after 10 hovers (?)
