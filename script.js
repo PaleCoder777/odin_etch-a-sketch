@@ -30,12 +30,20 @@ pixelDOM = [...pixelDOM];
 pixelGridDOM.addEventListener("mouseover", () => {
     let target = event.target;
 
-    switch (target.id) {
-        case ("pixel"):
-            target.classList.add("filled");
-            target.classList.add("inside");
-            break;
+    if (randomColorsEnabled === 1) {
+        let randomColor = getRandomColor();
+        target.style.backgroundColor = (randomColor);
+
+    } else {
+        switch (target.id) {
+            case ("pixel"):
+                target.classList.add("filled");
+                target.classList.add("inside");
+                break;
+        }
     }
+
+    
 });
 
 pixelGridDOM.addEventListener("mouseout", () => {
@@ -47,6 +55,16 @@ pixelGridDOM.addEventListener("mouseout", () => {
             break;
     }
 });
+
+// Random Colors Class Toggle
+let randomColors = document.querySelector("#randomColors");
+let randomColorsEnabled;
+randomColors.addEventListener("click", () => randomColorsEnabled = 1);
+
+// Removes the random colors condition
+let singleColor = document.querySelector("#singleColor");
+singleColor.addEventListener("click", () => randomColorsEnabled = 0);
+
 
 // Button prompt user for #, remove grid, add grid
 let newGridDOM = document.querySelector("#newGrid");
@@ -72,6 +90,7 @@ newGridDOM.addEventListener("click", () => {
     newPixelPadPerSide = (newPixelPadding / 2);
     newPixelPaddingDOM = (`${newPixelPadPerSide}px`);
 
+    randomColorsEnabled = 0;
     addPixel(newTotalSquares, newPixelPaddingDOM);
     pixelDOM = document.querySelectorAll(".pixel");
     pixelDOM = [...pixelDOM];
@@ -85,4 +104,13 @@ function addPixel(totalSquares, pixelPadding) {
         newPixelDOM.style.padding = pixelPadding;
         pixelGridDOM.appendChild(newPixelDOM);
     }
+}
+
+function getRandomColor() {
+    let randomHexValue = Math.random() * 16777215
+    randomHexValue = Math.floor(randomHexValue);
+    randomHexValue = randomHexValue.toString(16);
+    randomHexValue = randomHexValue.padStart(6, "0");
+    randomHexValue = (`#${randomHexValue}`);
+    return randomHexValue;
 }
